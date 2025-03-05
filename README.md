@@ -4,6 +4,7 @@ Overview:
 
 This project simulates the spread of a wildfire using a Cellular Automata (CA) model, incorporating environmental factors such as wind speed, humidity, and tree density. The goal is to provide insights into wildfire dynamics and support fire management strategies.
 
+
 Features:
 
 Customizable Simulation Parameters: Adjust wind speed, humidity, and terrain density.
@@ -15,6 +16,7 @@ Environmental Influence: Fire behavior is affected by wind direction and humidit
 Probabilistic Fire Spread Model: Incorporates stochastic rules for more realistic simulations.
 
 Comparative Analysis: Evaluates CA-based modeling against physics-based and machine learning approaches.
+
 
 Technologies Used:
 
