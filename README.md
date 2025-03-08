@@ -29,3 +29,6 @@ Matplotlib (Data visualization and plotting)
 Pygame (Interactive simulation rendering)
 
 SciPy (Mathematical modeling, if needed)
+
+March 8th, 2025
+The documentation was updated to detail the implementation that has been developed, and also includes yhe test plans formulated to move forward with the implementation.
