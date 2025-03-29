@@ -31,5 +31,8 @@ Pygame (Interactive simulation rendering)
 SciPy (Mathematical modeling, if needed)
 
 
+March 8th, 2025
+The documentation was updated to detail the implementation that has been developed, and also includes yhe test plans formulated to move forward with the implementation.
+
 Progress Update (3/29/2025)
 Recent development has focused on structured testing and data collection to better quantify fire behavior. The simulation now logs key metrics (burning, burned, unburned trees) at each step, and multiple test cases have been executed across different environmental conditions. Results are documented using Markdown and LaTeX for analysis, with future improvements aimed at capturing more detailed spread metrics like fire rate and directional movement.
