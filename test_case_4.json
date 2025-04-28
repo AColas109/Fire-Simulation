@@ -1,0 +1,12 @@
+{
+    "tree_density": 1.0,
+    "grid_size": 50,
+    "steps": 50,
+    "BASE_SPREAD_PROB": 0.3,
+    "MAX_SPREAD_PROB": 0.9,
+    "interactive": false,
+    "name": "test_case_4",
+    "wind_speed": 0.5,
+    "humidity": 0.5,
+    "wind_direction_deg": 0
+}

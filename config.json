@@ -1,15 +1,12 @@
 {
-    "wind_speed": 0.5,
-    "humidity": 0.5,
+    "wind_speed": 1.5,
+    "humidity": 0.7,
     "tree_density": 1.0,
     "grid_size": [
         50,
         50
     ],
-    "BASE_SPREAD_PROB": 0.3,
-    "MAX_SPREAD_PROB": 0.7,
-    "WIND_BIAS_DIR": [
-        0,
-        1
-    ]
+    "BASE_SPREAD_PROB": 0.45,
+    "MAX_SPREAD_PROB": 0.90,
+    "wind_direction_deg": 110
 }

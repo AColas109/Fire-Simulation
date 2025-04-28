@@ -1,13 +1,20 @@
 import numpy as np
+import math
 
 EMPTY, TREE, BURNING = 0, 1, 2
-WIND_BIAS_DIR = (0, 1)  # Wind blowing to the right
+
+# All 8 directional offsets (Moore neighborhood)
+MOORE_OFFSETS = [(-1, -1), (-1, 0), (-1, 1),
+                 (0, -1),          (0, 1),
+                 (1, -1),  (1, 0),  (1, 1)]
 
 def spread_fire(forest, config):
-    wind_speed = config.get("wind_speed", 1.0)
-    humidity = config.get("humidity", 0.3)
-    BASE_SPREAD_PROB = config.get("BASE_SPREAD_PROB", 0.3)
-    MAX_SPREAD_PROB = config.get("MAX_SPREAD_PROB", 0.7)
+    wind_speed = config["wind_speed"]
+    humidity = config["humidity"]
+    BASE_SPREAD_PROB = config["BASE_SPREAD_PROB"]
+    MAX_SPREAD_PROB = config["MAX_SPREAD_PROB"]
+    wind_dir_deg = config.get("wind_direction_deg", 0)
+    wind_rad = math.radians(wind_dir_deg)
 
     rows, cols = forest.shape
     new_forest = forest.copy()
@@ -15,21 +22,25 @@ def spread_fire(forest, config):
     for r in range(rows):
         for c in range(cols):
             if forest[r, c] == BURNING:
-                for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                for dr, dc in MOORE_OFFSETS:
                     nr, nc = r + dr, c + dc
                     if 0 <= nr < rows and 0 <= nc < cols and forest[nr, nc] == TREE:
-                        spread_prob = BASE_SPREAD_PROB * wind_speed * (1 - humidity)
-                        if (dr, dc) == WIND_BIAS_DIR:
-                            spread_prob *= 1.5
+                        # Compute direction angle
+                        spread_angle = math.atan2(dr, dc)
+                        angle_diff = abs(spread_angle - wind_rad)
+                        angle_diff = min(angle_diff, 2 * math.pi - angle_diff)
+
+                        # Bias for wind alignment (cosine-based)
+                        direction_bias = 1.5 + 0.5 * math.cos(angle_diff)
+
+                        # Final spread probability
+                        spread_prob = BASE_SPREAD_PROB * wind_speed * (1 - humidity) * direction_bias
                         spread_prob = min(spread_prob, MAX_SPREAD_PROB)
-                        spread_prob = max(spread_prob, 0.1)  # Floor to allow fire to spread
 
-                        rand_val = np.random.rand()
-                        if rand_val < spread_prob:
+                        if np.random.rand() < spread_prob:
                             new_forest[nr, nc] = BURNING
-                            print(f"🔥 ({r},{c}) → ({nr},{nc}) | P={spread_prob:.2f} vs Rand={rand_val:.2f}")
 
-    # After spreading, turn burning trees into empty
+    # Burnout phase
     for r in range(rows):
         for c in range(cols):
             if forest[r, c] == BURNING:

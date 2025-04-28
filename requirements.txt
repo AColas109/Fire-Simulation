@@ -1,2 +1,5 @@
-numpy
-pygame
+# requirements.txt
+
+numpy>=1.23.0
+pygame>=2.1.0
+matplotlib>=3.5.0

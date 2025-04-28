@@ -12,7 +12,7 @@ with open("config.json", "r") as f:
 GRID_SIZE = tuple(config.get("grid_size", [50, 50]))
 
 # Initialize forest with all trees
-forest = np.full(GRID_SIZE, TREE)
+forest = np.full(GRID_SIZE, TREE, dtype=np.uint8)
 # Set initial burning cell in center
 center_r, center_c = GRID_SIZE[0] // 2, GRID_SIZE[1] // 2
 forest[center_r, center_c] = BURNING

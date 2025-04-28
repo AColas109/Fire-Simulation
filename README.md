@@ -1,38 +1,62 @@
-# Fire-Simulation
+# Forest Fire Spread Simulation
 
-Overview:
+## Overview
 
-This project simulates the spread of a wildfire using a Cellular Automata (CA) model, incorporating environmental factors such as wind speed, humidity, and tree density. The goal is to provide insights into wildfire dynamics and support fire management strategies.
+This project simulates the spread of a wildfire using a Cellular Automata (CA) model, incorporating environmental factors such as wind speed, humidity, and tree density. The simulation provides insight into wildfire dynamics for education, analysis, and fire management purposes.
 
+## Features
 
-Features:
+- Customizable simulation parameters: wind speed, humidity, grid size.
+- Real-time visualization of fire spread using Pygame.
+- Directional wind bias with probabilistic modeling.
+- Quantitative data logging of burned cells, fire duration, and fire front progression.
+- Statistical analysis and boxplots of simulation outcomes.
 
-Customizable Simulation Parameters: Adjust wind speed, humidity, and terrain density.
+## Technologies Used
 
-Real-Time Visualization: Uses Pygame and Matplotlib to animate fire spread.
+- Python 3.9+
+- NumPy
+- Pygame
+- Matplotlib
 
-Environmental Influence: Fire behavior is affected by wind direction and humidity.
+## Setup Instructions
 
-Probabilistic Fire Spread Model: Incorporates stochastic rules for more realistic simulations.
+1. **Create a virtual environment**:  
+   `python -m venv .venv`
 
-Comparative Analysis: Evaluates CA-based modeling against physics-based and machine learning approaches.
+2. **Activate the virtual environment**:  
+   - Windows: `.venv\Scripts\activate`
+   - macOS/Linux: `source .venv/bin/activate`
 
+3. **Install the required dependencies**:  
+   `pip install -r requirements.txt`
 
-Technologies Used:
+4. **Run the simulation**:  
+   `python main.py`
 
-Python (Core logic and simulation)
+This will launch the simulation window and begin animating fire spread based on the parameters set in the `config.json` file.
 
-NumPy (Grid-based data processing)
+## Project Structure
 
-Matplotlib (Data visualization and plotting)
+- `main.py` — Entry point for running the simulation.
+- `fire_spread.py` — Handles probabilistic fire spread logic.
+- `visualization.py` — Renders the grid and fire animation.
+- `log.py` — Logs simulation statistics.
+- `weather.py` — Handles environmental influences like wind direction and humidity.
+- `config.json` — Configuration file to modify simulation settings.
+- `requirements.txt` — List of required Python packages.
 
-Pygame (Interactive simulation rendering)
+## Requirements
 
-SciPy (Mathematical modeling, if needed)
+- Python 3.9 or higher
+- Operating Systems: Windows 10/11 (tested), macOS, Linux
+- Basic hardware capable of running Python and Pygame
 
+## Notes
 
-March 8th, 2025
-The documentation was updated to detail the implementation that has been developed, and also includes yhe test plans formulated to move forward with the implementation.
+- Always activate the virtual environment before running.
+- Data logs are automatically saved in the `/logs/` directory after a simulation run.
+- Large grid sizes or extreme parameters may slightly impact performance on lower-end systems.
 
-Progress Update (3/29/2025)
-Recent development has focused on structured testing and data collection to better quantify fire behavior. The simulation now logs key metrics (burning, burned, unburned trees) at each step, and multiple test cases have been executed across different environmental conditions. Results are documented using Markdown and LaTeX for analysis, with future improvements aimed at capturing more detailed spread metrics like fire rate and directional movement.
+## Repository
+(https://github.com/AColas109/Fire-Simulation)
